@@ -1,0 +1,16 @@
+{
+  "description": "Divi5 Toolkit hooks. PostToolUse on Write|Edit runs a deterministic shell script that exits silently unless the edited file has a stylesheet extension (.css/.scss/.sass/.less) AND the project's .claude/divi5-toolkit.local.md sets auto_validate: true. The earlier prompt-type implementation was replaced because LLM-backed hooks narrated their decisions instead of staying silent, blocking non-CSS edits.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/css-validate.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
