@@ -1,0 +1,57 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.webmyc/respira-wordpress",
+  "title": "Respira WordPress MCP",
+  "description": "180+ tools for 12 page builders. Element-level editing, full page creation, HTML-to-builder conversion with rendering fidelity validation, per-site tool governance, snapshots + duplicate-before-edit safety, stock images, bulk operations. Requires the Respira WordPress plugin and a valid license to function.",
+  "repository": {
+    "url": "https://github.com/respira-press/respira-wordpress-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://respira.press",
+  "icons": [
+    {
+      "src": "https://respira.press/icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "version": "6.11.4",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@respira/wordpress-mcp-server",
+      "version": "6.11.4",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "WORDPRESS_URL",
+          "description": "WordPress site URL for the single-site env setup.",
+          "format": "string",
+          "placeholder": "https://example.com"
+        },
+        {
+          "name": "WORDPRESS_API_KEY",
+          "description": "Respira API key for the single-site env setup. Generate at wp-admin > Respira > API Keys.",
+          "format": "string",
+          "isSecret": true
+        },
+        {
+          "name": "RESPIRA_CONFIG_B64",
+          "description": "Base64-encoded multi-site Respira config JSON. Use for managing multiple WordPress sites from one MCP install.",
+          "format": "string",
+          "isSecret": true
+        },
+        {
+          "name": "RESPIRA_CONFIG_FILE",
+          "description": "Path to a Respira config JSON file (alternative to RESPIRA_CONFIG_B64).",
+          "format": "filepath",
+          "placeholder": "~/.respira/config.json"
+        }
+      ]
+    }
+  ]
+}
